@@ -16,15 +16,15 @@
 | `add`           | `rt = rt + rs + imm` |
 | `sub`           | `rt = rt - rs - imm`  |
 | `put`           | `rt = rs + imm` |           //behövs ej
-| `skip`          | Jump one line if rt = rs|
+| `skip`          | Skip next line if `rt == rs` or if `rt == imm`|
 
 ## S-Instructions
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
 | `in`             | Get integer value from input stream and store in `rs`|
-| `out`             | Write a value to the output stream|
-| `exit`             | Exit the program |
+| `out`            | Write the value from `rs` to the output stream|
+| `exit`           | Exit the program |
 
 ## J-Instructions
 
@@ -38,7 +38,7 @@
 
     There are four registers..
 
-    - =0    //Always equal to zero
+    - %0    //Always equal to zero
     - R1    
     - R2                                    
     - R3
