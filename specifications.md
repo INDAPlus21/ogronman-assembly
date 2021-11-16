@@ -4,9 +4,9 @@
 
 | **Type** | **Encoding** |
 |:---------|:-------------|
-| Register | `op<7:6>, rs<5:4>, rt<3:2>, imm<1:0>` |
-| Special  | `op<7:6>, rs<5:4>, imm<3:0>`` |
-| Jump     | `op<7:6>, addr<4:0>` |
+| Register | `op<7:5>, rs<4:3>, rt<2:1>, imm<0>` |
+| Special  | `op<7:5>, rs<4:3>, imm<2:0>` |
+| Jump     | `op<7:5>, addr<4:0>` |
 
 
 ## R-Instructions
