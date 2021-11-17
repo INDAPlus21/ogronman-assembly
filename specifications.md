@@ -5,7 +5,7 @@
 | **Type** | **Encoding** |
 |:---------|:-------------|
 | Register | `op<7:5>, rs<4:2>, rt<1:0>` |
-| Special  | `op<7:5>, rs<4:3>, imm<2:0>` |
+| Special  | `op<7:5>, rs<4:2>, imm<1:0>` |
 | Jump     | `op<7:5>, addr<4:0>` |
 
 
@@ -23,8 +23,8 @@
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
-| `Call`             |`Call = imm`, `rs = Call-Instruct` calls a call-instruction and saves it in rs|
-| ``               ||
+| `call`             |`Call = imm`, `rs = Call-Instruct` calls a call-instruction and saves it in rs|
+| `remove`           | `rs = rs - imm` |
 | ``            | |
 
 ## Call-Instructions
