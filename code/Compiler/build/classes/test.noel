@@ -1,0 +1,29 @@
+
+A simple program that will take a single integer and print the factorial of that integer
+
+The code is very inefficent and to calculate the max value 12! will probably take around 4 minutes on my mid end computer
+However up to 9! is almost instant... :)
+
+Max input value is 12
+
+<Start
+
+call R1 0
+put R2 R1
+<Outer
+sub R1 %1
+put R3 R1
+<Inner
+add R3 R1
+sub R2 %1
+skip R2 %1
+ju <Inner
+put R2 R3
+skip R1 %1
+ju <Outer
+
+call R3 1
+call %0 2
+
+<End
+
