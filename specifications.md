@@ -31,9 +31,9 @@
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
-| `1`             | Get integer value from input stream and store in `rs`|
-| `2`            | Write the value from `rs` to the output stream|
-| `3`           | Exit the program |
+| `0`             | Get integer value from input stream and store in `rs`|
+| `1`            | Write the value from `rs` to the output stream|
+| `2`           | Exit the program |
 
 ## J-Instructions
 
