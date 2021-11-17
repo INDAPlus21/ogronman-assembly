@@ -16,7 +16,7 @@
 | `add`           | `rt = rt + rs` |
 | `sub`           | `rt = rt - rs`  |
 | `put`           | `rt = rs` |          
-| `skip`          | Skip next line if `rt == rs` or if `rt == imm`|
+| `skip`          | Skip next line if `rt == rs`|
 
 
 ## S-Instructions
@@ -25,7 +25,7 @@
 |:----------------|:----------------|
 | `call`             |`Call = imm`, `rs = Call-Instruct` calls a call-instruction and saves it in rs|
 | `remove`           | `rs = rs - imm` |
-| ``            | |
+| `counter`          | if `rs == imm` skip `imm` lines|
 
 ## Call-Instructions
 
