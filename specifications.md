@@ -4,7 +4,7 @@
 
 | **Type** | **Encoding** |
 |:---------|:-------------|
-| Register | `op<7:5>, rs<4:3>, rt<2:1>, imm<0>` |
+| Register | `op<7:5>, rs<4:2>, rt<1:0>` |
 | Special  | `op<7:5>, rs<4:3>, imm<2:0>` |
 | Jump     | `op<7:5>, addr<4:0>` |
 
@@ -15,16 +15,25 @@
 |:----------------|:----------------|
 | `add`           | `rt = rt + rs + imm` |
 | `sub`           | `rt = rt - rs - imm`  |
-| `put`           | `rt = rs + imm` |           //behövs ej
+| `put`           | `rt = rs + imm` |          
 | `skip`          | Skip next line if `rt == rs` or if `rt == imm`|
+
 
 ## S-Instructions
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
-| `in`             | Get integer value from input stream and store in `rs`|
-| `out`            | Write the value from `rs` to the output stream|
-| `exit`           | Exit the program |
+| `Call`             |`Call = imm`, `rs = Call-Instruct` calls a call-instruction and saves it in rs|
+| ``               ||
+| ``            | |
+
+## Call-Instructions
+
+| **Instruction** | **Description** |
+|:----------------|:----------------|
+| `1`             | Get integer value from input stream and store in `rs`|
+| `2`            | Write the value from `rs` to the output stream|
+| `3`           | Exit the program |
 
 ## J-Instructions
 
@@ -39,6 +48,7 @@
     There are four registers..
 
     - %0    //Always equal to zero
+    - %1    //Always equal to one
     - R1    
     - R2                                    
     - R3
