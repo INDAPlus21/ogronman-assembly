@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package compiler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -18,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Win7
+ * @author oGronman
  */
 public class Main {
 
@@ -53,10 +47,10 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            // if (args[0].substring(args[0].lastIndexOf(".") + 1).equals("noel")) {
-            // filePath = args[0];
-            // outPath = args[1];
-            // }
+            if (args[0].substring(args[0].lastIndexOf(".") + 1).equals("noel")) {
+            filePath = args[0];
+            outPath = args[1];
+            }
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             System.out.println("Please provide two arguments...");
             System.out.println("input/source file and directory to output file");
@@ -76,7 +70,7 @@ public class Main {
 
     private static void preReadFile() throws FileNotFoundException {
         //filePath = "G:/My Drive/Programmering/Compiler/src/test2.noel";
-        filePath = "src/test.noel";
+        //filePath = "src/test.noel";
         Scanner preReader = new Scanner(new File(filePath));
 
         String temp = "";
@@ -167,7 +161,7 @@ public class Main {
 
     private static void makeExecutable() throws IOException {
         //outPath = "G:/My Drive/Programmering/Compiler/src/out.nexe";
-        outPath = "src/out.nexe";
+        //outPath = "src/out.nexe";
         ByteArrayOutputStream writeByte = new ByteArrayOutputStream();
         FileOutputStream out = null;
         try {
