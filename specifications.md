@@ -13,9 +13,9 @@
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
-| `add`           | `rt = rt + rs + imm` |
-| `sub`           | `rt = rt - rs - imm`  |
-| `put`           | `rt = rs + imm` |          
+| `add`           | `rt = rt + rs` |
+| `sub`           | `rt = rt - rs`  |
+| `put`           | `rt = rs` |          
 | `skip`          | Skip next line if `rt == rs` or if `rt == imm`|
 
 
