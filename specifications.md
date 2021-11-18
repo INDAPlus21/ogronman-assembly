@@ -1,4 +1,4 @@
-# No error language
+# Not enough java - language
 
 ## Instructions
 
