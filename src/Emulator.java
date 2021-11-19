@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -16,7 +15,7 @@ public class Emulator {
     private int[] registers;
 
     public Emulator() {
-        registers = new int[5];
+        registers = new int[8];
     }
 
     public void readByteFile(String inputPath) {
@@ -72,7 +71,7 @@ public class Emulator {
 
                 if (registers[rt] == registers[rs]) {
                     currentLine++;
-                    //System.out.println("skipping");
+                    // System.out.println("skipping");
                 }
 
             } else if (op.equals("011")) {
@@ -84,36 +83,48 @@ public class Emulator {
 
             } else if (op.equals("100")) {
                 int addr = Integer.parseInt(code.substring(3, 8), 2);
-                //System.out.println("The adress is: " + addr);
-                //System.out.println(currentLine);
+                // System.out.println("The adress is: " + addr);
+                // System.out.println(currentLine);
                 currentLine = addr;
                 currentLine--;
-                //System.out.println(currentLine);
+                // System.out.println(currentLine);
 
             } else if (op.equals("101")) {
 
-                int rs = Integer.parseInt(code.substring(3, 5), 2);
-                int imm = Integer.parseInt(code.substring(5), 2);
+                int rs = Integer.parseInt(code.substring(3, 6), 2);
+                int imm = Integer.parseInt(code.substring(6), 2);
+
+                registers[rs] = imm;
 
             } else if (op.equals("110")) {
 
-                int rs = Integer.parseInt(code.substring(3, 5), 2);
-                int imm = Integer.parseInt(code.substring(5), 2);
+                int rs = Integer.parseInt(code.substring(3, 6), 2);
+                int imm = Integer.parseInt(code.substring(6), 2);
+
+                if (imm == 0) {
+                    registers[rs]--;
+                } else if (imm == 1) {
+                    if (registers[rs] == registers[4]) {
+                        currentLine++;
+                    }
+                } else if (imm == 2) {
+                    registers[rs]++;
+                }
 
             } else if (op.equals("111")) {
-                int rs = Integer.parseInt(code.substring(3, 5), 2);
-                int imm = Integer.parseInt(code.substring(5), 2);
+                int rs = Integer.parseInt(code.substring(3, 6), 2);
+                int imm = Integer.parseInt(code.substring(6), 2);
 
                 if (imm == 0) {
                     Scanner sc = new Scanner(System.in);
                     Boolean isTrue = true;
                     while (isTrue)
-                    try {
-                        registers[rs] = Integer.parseInt(sc.nextLine());
-                        isTrue = false;
-                    } catch (java.lang.NumberFormatException e) {
+                        try {
+                            registers[rs] = Integer.parseInt(sc.nextLine());
+                            isTrue = false;
+                        } catch (java.lang.NumberFormatException e) {
 
-                    }
+                        }
                     sc.close();
                 } else if (imm == 1) {
                     System.out.println(registers[rs]);
@@ -123,10 +134,10 @@ public class Emulator {
             }
             registers[0] = 0;
             registers[4] = 1;
-            //System.out.println("Code is: " + code);
-            //System.out.println("R1 = " + registers[1]);
-            //System.out.println("R2 = " + registers[2]);
-            //System.out.println("R3 = " + registers[3]);
+            // System.out.println("Code is: " + code);
+            // System.out.println("R1 = " + registers[1]);
+            // System.out.println("R2 = " + registers[2]);
+            // System.out.println("R3 = " + registers[3]);
             currentLine++;
         }
 

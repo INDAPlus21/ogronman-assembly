@@ -51,6 +51,8 @@ public class Main extends JFrame {
             put("skip", 3);
             put("ju", 2);
             put("call", 3);
+            put("set", 3);
+            put("counter", 3);
         }
     };
 
@@ -61,6 +63,8 @@ public class Main extends JFrame {
             add("r3");
             add("%0");
             add("%1");
+            add("c1");
+            add("c2");
         }
     };
 
@@ -143,7 +147,7 @@ public class Main extends JFrame {
 
         this.addMouseWheelListener(new MouseWheelListener() {
             @Override
-            public void mouseWheelMoved(MouseWheelEvent e) {        //Ner = 1, upp = -1
+            public void mouseWheelMoved(MouseWheelEvent e) { // Ner = 1, upp = -1
                 if (command[0] == 17) {
                     if (e.getWheelRotation() == 1) {
                         if (fontSize >= 5) {
@@ -170,7 +174,7 @@ public class Main extends JFrame {
         textPane.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                //updateText(textPane);
+                // updateText(textPane);
             }
 
             @Override
@@ -194,7 +198,7 @@ public class Main extends JFrame {
                     command[0] = 0;
                     command[1] = 0;
                 }
-                if (e.getKeyCode() == 32 || e.getKeyCode() == 10) {  //
+                if (e.getKeyCode() == 32 || e.getKeyCode() == 10) { //
                     updateText(textPane);
                 }
             }
@@ -239,7 +243,7 @@ public class Main extends JFrame {
                         if (instructions.containsKey(com[j])) {
                             appendToPane(text, com[j], Color.RED);
                             appendToPane(text, "", new Color(63 + 50, 15 + 50, 41 + 50));
-                        } else if (registers.contains(com[j])) {
+                        } else if (registers.contains(com[j].toLowerCase())) {
                             appendToPane(text, com[j], new Color(78 + 50, 159 + 50, 61 + 50));
                             appendToPane(text, "", new Color(63 + 50, 15 + 50, 41 + 50));
                         } else if (com[j].contains("<")) {
@@ -248,11 +252,11 @@ public class Main extends JFrame {
                         } else {
                             appendToPane(text, com[j] + "", new Color(63 + 50, 15 + 50, 41 + 50));
                         }
-                        //appendToPane(text, "\n", Color.RED);
+                        // appendToPane(text, "\n", Color.RED);
                     } else if (instructions.containsKey(com[j])) {
                         appendToPane(text, com[j] + " ", new Color(149 + 50, 1 + 50, 1 + 50));
                         appendToPane(text, "", new Color(63 + 50, 15 + 50, 41 + 50));
-                    } else if (registers.contains(com[j])) {
+                    } else if (registers.contains(com[j].toLowerCase().toLowerCase())) {
                         appendToPane(text, com[j] + " ", new Color(30 + 50, 81 + 50, 40 + 50));
                         appendToPane(text, "", new Color(63 + 50, 15 + 50, 41 + 50));
                     } else if (com[j].contains("<")) {
@@ -308,6 +312,7 @@ public class Main extends JFrame {
                 compileFile();
                 makeExecutable();
             } else {
+                filePath = "G:/My Drive/Programmering/Compiler/src";
                 filePath = args[0];
                 filePath += "in.nej";
                 outPath = args[0];
@@ -323,11 +328,12 @@ public class Main extends JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     private static void preReadFile() throws FileNotFoundException {
-        //filePath = "G:/My Drive/Programmering/Compiler/src/test2.noel";
-        //filePath = "src/test2.noel";
+        // filePath = "G:/My Drive/Programmering/Compiler/src/test2.noel";
+        // filePath = "src/test2.noel";
         Scanner preReader = new Scanner(new File(filePath));
 
         String temp = "";
@@ -350,8 +356,12 @@ public class Main extends JFrame {
         flags.put(temp.substring(1), counter);
         if (preReader.hasNextLine()) {
             do {
+                try {
+                    temp = preReader.nextLine();
 
-                temp = preReader.nextLine();
+                } catch (java.util.NoSuchElementException e) {
+                    break;
+                }
 
                 if (!temp.isBlank()) {
                     if (temp.startsWith("<")) {
@@ -383,10 +393,12 @@ public class Main extends JFrame {
                                     }
                                 }
 
-                                if (compCode.length == 3 && !compCode[0].equals("call")) {
-                                    String tempString = compCode[1];
-                                    compCode[1] = compCode[2];
-                                    compCode[2] = tempString;
+                                if (compCode.length == 3 && !compCode[0].equals("set") && !compCode[0].equals("counter")) {
+                                    if ((compCode[0].equals("call") && !registers.contains(compCode[1])) || !compCode[0].equals("call")) {
+                                        String tempString = compCode[1];
+                                        compCode[1] = compCode[2];
+                                        compCode[2] = tempString;
+                                    }
                                 }
 
                                 if (regInstructions.containsKey(compCode[0])) {
@@ -428,8 +440,8 @@ public class Main extends JFrame {
     }
 
     private static void makeExecutable() throws IOException {
-        //outPath = "G:/My Drive/Programmering/Compiler/src/out.nexe";
-        //outPath = "src/out.nexe";
+        // outPath = "G:/My Drive/Programmering/Compiler/src/out.nexe";
+        // outPath = "src/out.nexe";
         ByteArrayOutputStream writeByte = new ByteArrayOutputStream();
         FileOutputStream out = null;
         try {
