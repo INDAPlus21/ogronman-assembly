@@ -23,9 +23,16 @@
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
-| `call`             |`Call = imm`, `rs = Call-Instruct` calls a call-instruction and saves it in rs|
-| `remove`           | `rs = rs - imm` |
-| `counter`          | if `rs == imm` skip `imm` lines|
+| `call`          |`Call = imm`, `rs = Call-Instruct` calls a call-instruction and saves it in rs|
+| `set`           | `rs = imm` |
+| `counter`       | calls the specified counter instructions|
+
+## J-Instructions
+
+| **Instruction** | **Description** |
+|:----------------|:----------------|
+| `ju`             | Jump to given line or flag|
+
 
 ## Call-Instructions
 
@@ -35,20 +42,26 @@
 | `1`            | Write the value from `rs` to the output stream|
 | `2`           | Exit the program |
 
-## J-Instructions
+## Counter-Instructions
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
-| `ju`             | Jump to given line|
+| `0`             | `rs = rs - %1` |
+| `1`             | if `rs == %1` skip one line|
+| `2`             | `rs = rs+%1`|
+
+
 
 
 
 ## Registers
 
-    There are four registers..
+    There are seven registers..
 
     - %0    //Always equal to zero
     - %1    //Always equal to one
+    - C1    //Counter register
+    - C2    //Counter register
     - R1    
     - R2                                    
     - R3
