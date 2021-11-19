@@ -11,4 +11,4 @@ by playing really bad and random snake
 Run by:
 1. navigating into src
 2. `javac *.java` in terminal
-3. Then 'java Main "directory to where you want to save stuff ig"'
+3. Then 'java Main saveDirectory'
