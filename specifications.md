@@ -42,7 +42,7 @@
 | `1`            | Write the value from `rs` to the output stream|
 | `2`           | Exit the program |
 
-## Call-Instructions
+## Counter-Instructions
 
 | **Instruction** | **Description** |
 |:----------------|:----------------|
