@@ -1,10 +1,8 @@
-
-
 import java.util.HashMap;
 
 /**
  *
- * @author oGronman
+ * @author Win7
  */
 public class Compiler {
 
@@ -45,11 +43,8 @@ public class Compiler {
                 }
             }
         }
+        
         compiled = checkLength(compiled);
-
-        if (compiled.length() != 8) {
-            System.out.println(compiled);
-        }
 
         int convert = Integer.parseInt(compiled, 2);
         byte returnByte = (byte) convert;
@@ -65,7 +60,7 @@ public class Compiler {
             code = code.substring(0, 3) + temp + code.substring(3);
 
         } else if ((code.substring(0, 3).equals("111")) && code.length() != 8) {
-            if (code.length() > 5) {
+            if (code.length() > 6) {
                 String temp = "";
                 for (int i = code.length(); i < 8; i++) {
                     temp += "0";
@@ -77,7 +72,6 @@ public class Compiler {
                     temp += "0";
                 }
                 code = code.substring(0, 3) + temp + code.substring(3);
-                System.out.println(code);
             }
 
         } else if (code.length() < 8) {

@@ -1,3 +1,5 @@
+
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -37,7 +39,7 @@ import javax.swing.text.StyleContext;
 
 /**
  *
- * @author oGronman
+ * @author Win7
  */
 public class Main extends JFrame {
 
@@ -86,11 +88,11 @@ public class Main extends JFrame {
     private TextLineNumber tln;
     private Font bigFont;
     JPanel panel;
+    Boolean snakeCode = false;
 
     public Main() {
 
         super("Compiler for the \"Not Enough Java\" language");
-
         int[] command = {0, 0};
         this.setBackground(new Color(12, 11, 21));
         panel = new JPanel();
@@ -128,6 +130,11 @@ public class Main extends JFrame {
         compileB.setForeground(new Color(63 + 50, 15 + 50, 41 + 50));
         compileB.setBackground(new Color(23, 9, 37));
 
+        JButton snakeB = new JButton("Write code");
+        snakeB.setFont(bigFont);
+        snakeB.setForeground(new Color(63 + 50, 15 + 50, 41 + 50));
+        snakeB.setBackground(new Color(23, 9, 37));
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
@@ -144,6 +151,12 @@ public class Main extends JFrame {
         gbc.insets = new Insets(0, 0, 10, 10);
         gbc.weighty = 1;
         panel.add(compileB, gbc);
+        gbc = new GridBagConstraints();
+        gbc.gridx = 3;
+        gbc.gridy = 3;
+        gbc.insets = new Insets(0, 0, 10, 10);
+        gbc.weighty = 1;
+        panel.add(snakeB, gbc);
 
         this.addMouseWheelListener(new MouseWheelListener() {
             @Override
@@ -213,7 +226,9 @@ public class Main extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    writeToFile(textPane);
+                    if (!snakeCode) {
+                        writeToFile(textPane);
+                    }
                     preReadFile();
                     compileFile();
                     makeExecutable();
@@ -222,6 +237,14 @@ public class Main extends JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        });
+
+        snakeB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Snake s = new Snake(filePath);
+                snakeCode = true;
             }
         });
         add(panel);
@@ -401,7 +424,7 @@ public class Main extends JFrame {
                                     }
                                 }
 
-                                if (regInstructions.containsKey(compCode[0])) {
+                                if (regInstructions.containsKey(compCode[0]) || compCode[0].equals("call")) {
                                     if (compCode[1].contains("r")) {
                                         compCode[1] = compCode[1].substring(0, 1) + "s" + compCode[1].substring(1);
                                     }

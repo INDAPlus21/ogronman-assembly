@@ -1,6 +1,8 @@
+
+
 /**
  *
- * @author oGronman
+ * @author Win7
  */
 public class wrongArgsException extends Exception{
 

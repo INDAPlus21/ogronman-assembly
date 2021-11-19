@@ -1,3 +1,5 @@
+
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author oGronman
+ * @author Win7
  */
 public class Emulator {
 
