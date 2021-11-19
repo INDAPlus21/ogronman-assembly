@@ -12,3 +12,4 @@ Run by:
 1. navigating into src
 2. `javac *.java` in terminal
 3. Then `java Main saveDirectory`
+4. Pray
