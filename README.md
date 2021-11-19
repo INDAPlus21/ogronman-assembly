@@ -6,3 +6,9 @@ A simple assembly language where you can write programs normally in the built-in
 or
 
 by playing really bad and random snake
+
+
+Run by:
+1. navigating into src
+2. `javac *.java` in terminal
+3. Then 'java Main "directory to where you want to save stuff ig"'
