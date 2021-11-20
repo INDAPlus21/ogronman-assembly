@@ -15,9 +15,13 @@ Run by:
 4. Pray
 
 ##Text-editor
+
+
 Ctrl+scroll to zoom
 Ctrl+S to save
 
 ##snake
+
+
 Control with arrow-keys
 Ctrl + P to print to in-file
