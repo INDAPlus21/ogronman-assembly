@@ -14,14 +14,14 @@ Run by:
 3. Then `java Main saveDirectory`
 4. Pray
 
-##Text-editor
+## Text-editor
 
 
 Ctrl+scroll to zoom
 
 Ctrl+S to save
 
-##snake
+## snake
 
 
 Control with arrow-keys
