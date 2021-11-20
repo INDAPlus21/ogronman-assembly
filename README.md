@@ -18,10 +18,12 @@ Run by:
 
 
 Ctrl+scroll to zoom
+
 Ctrl+S to save
 
 ##snake
 
 
 Control with arrow-keys
+
 Ctrl + P to print to in-file
